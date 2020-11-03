@@ -1,0 +1,3 @@
+# Track your time
+
+The goal of the project is reacreating the landing page of an earlier time tracker app. That app use several libraries and frameworks such as: React, Redux, Material UI, Bootstrap, etc. We want to gain better understanding what happens under the hood so decided to apply pure HTML, CSS and Javascript solutions to build this SPA. Thus, we will unlock the powers of modern JS version by using the features of ES6 and above.

@@ -48,24 +48,27 @@ style.innerHTML = `
   }
 `
 
+// Setting Up Interface For Class Type.
 interface NavbarProps {
   container: HTMLDivElement,
-  menuState: boolean,
   setLogo: () => void,
   setBurgerMenu: () => void,
   setNavLinks: (links: string[]) => void
 }
 
+// Using Implements To Use Interface.
+// Set Private Which Is Not Necessary For Build And Shouldn't Be Called Outside The Class.
 export class Navbar implements NavbarProps {
-  container: HTMLDivElement;
-  menuState: boolean;
+  public container: HTMLDivElement;
+  private menuState: boolean;
 
-  constructor(navBarContainer: HTMLDivElement) {
+  public constructor(navBarContainer: HTMLDivElement) {
     this.container = navBarContainer;
     this.menuState = false;
   }
 
-  setLogo(): void {
+  // Method To Set Logo.
+  public setLogo(): void {
     const logoContainer: HTMLDivElement = document.createElement('div');
     const logoImage: HTMLImageElement = document.createElement('img');
     logoContainer.setAttribute('class', 'logo-container');
@@ -79,7 +82,8 @@ export class Navbar implements NavbarProps {
     })
   }
 
-  setBurgerMenu(): void {
+  // Set Burger Menu.
+  public setBurgerMenu(): void {
     const menuContainer: HTMLDivElement = document.createElement('div');
     menuContainer.setAttribute('class', 'menu-container');
     this.container.appendChild(menuContainer);
@@ -95,7 +99,8 @@ export class Navbar implements NavbarProps {
     menuContainer.addEventListener('click', this.changeMenuState);
   }
 
-  setNavLinks(links: string[]): void {
+  // Set Nav Links.
+  public setNavLinks(links: string[]): void {
     const linksContainer: HTMLDivElement = document.createElement('div');
     const ul: HTMLUListElement = document.createElement('ul');
     linksContainer.setAttribute('class', 'links-container');
@@ -107,6 +112,7 @@ export class Navbar implements NavbarProps {
       const li: HTMLLIElement = document.createElement('li');
       const a: HTMLAnchorElement = document.createElement('a');
 
+      // Using Regex To Change The String, If Space Present Then Fill With '-'.
       const idText: string = links[i].replace(/\s+/g, '-').toLowerCase();
       const linkText: string = links[i].toUpperCase();
 
@@ -121,7 +127,8 @@ export class Navbar implements NavbarProps {
     }
   }
 
-  changeMenuState = (): void => {
+  // Change Menu State And Animation.
+  private changeMenuState = (): void => {
     const bars: NodeListOf<Element> = this.container.querySelectorAll('.burger-bar');
     const ul: HTMLElement | null = this.container.querySelector('ul');
     this.menuState = !this.menuState;

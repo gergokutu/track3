@@ -76,7 +76,7 @@ export class Navbar implements NavbarProps {
     logoContainer.appendChild(logoImage);
     Object.assign(logoImage, {
       className: 'logo-img',
-      src: '../src/assets/logo-img.png',
+      src: '../src/assets/logo-img.svg',
       alt: 'Logo',
       title: 'Project Management'
     })

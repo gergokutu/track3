@@ -1,25 +1,28 @@
 {
-  "name": "track3",
-  "version": "1.0.0",
-  "description": "The goal of the project is reacreating the landing page of an earlier time tracker app. That app use several libraries and frameworks such as: React, Redux, Material UI, Bootstrap, etc. We want to gain better understanding what happens under the hood so decided to apply pure HTML, CSS and Javascript solutions to build this SPA. Thus, we will unlock the powers of modern JS version by using the features of ES6 and above.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --watch"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gergokutu/track3.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/gergokutu/track3/issues"
-  },
-  "homepage": "https://github.com/gergokutu/track3#readme",
-  "devDependencies": {
-    "ts-loader": "^8.0.7",
-    "typescript": "^4.0.5"
-  }
+	"name": "track3",
+	"version": "1.0.0",
+	"description": "The goal of the project is reacreating the landing page of an earlier time tracker app. That app use several libraries and frameworks such as: React, Redux, Material UI, Bootstrap, etc. We want to gain better understanding what happens under the hood so decided to apply pure HTML, CSS and Javascript solutions to build this SPA. Thus, we will unlock the powers of modern JS version by using the features of ES6 and above.",
+	"main": "index.js",
+	"scripts": {
+		"test": "jest --watch",
+		"build": "webpack --watch"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/gergokutu/track3.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/gergokutu/track3/issues"
+	},
+	"homepage": "https://github.com/gergokutu/track3#readme",
+	"devDependencies": {
+		"@types/jest": "^26.0.15",
+		"jest": "^26.6.3",
+		"ts-jest": "^26.4.4",
+		"ts-loader": "^8.0.7",
+		"typescript": "^4.0.5"
+	}
 }

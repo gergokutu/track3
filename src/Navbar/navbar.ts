@@ -1,4 +1,4 @@
-import { Navbar } from './setNavbar'
+import Navbar from './setNavbar'
 
 export const navbarInit = (container: HTMLDivElement): void => {
   const links : string[]= ['Home', 'About  Us', 'Our Goals', 'Contact Us', 'Career'];

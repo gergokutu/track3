@@ -26,10 +26,10 @@ body.appendChild(navbarContainer);
 
 navbarInit(navbarContainer);
 
-const sum = (...a: number[]): number => a.reduce((acc, val) => acc + val, 0);
+export const sum = (...a: number[]): number => a.reduce((acc, val) => acc + val, 0);
 const justOneNumber: number = sum(1, 2, 3, 4);
 const testTitle: HTMLHeadingElement = document.createElement('h1');
 testTitle.innerHTML = `Just a calculated value for testing >>> ${justOneNumber.toString()} :)`;
 document.body.appendChild(testTitle);
 
-export { sum };
+

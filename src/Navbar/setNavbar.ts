@@ -46,103 +46,95 @@ style.innerHTML = `
   .target-link:hover{
     color: green;
   }
-`;
+`
 
 // Setting Up Interface For Class Type.
 interface NavbarProps {
-	container: HTMLDivElement;
-	setLogo: () => void;
-	setBurgerMenu: () => void;
-	setNavLinks: (links: string[]) => void;
+  container: HTMLDivElement,
+  setLogo: () => void,
+  setBurgerMenu: () => void,
+  setNavLinks: (links: string[]) => void
 }
 
 // Using Implements To Use Interface.
 // Set Private Which Is Not Necessary For Build And Shouldn't Be Called Outside The Class.
-export class Navbar implements NavbarProps {
-	public container: HTMLDivElement;
-	private menuState: boolean;
+export default class Navbar implements NavbarProps {
+  public container: HTMLDivElement;
+  private menuState: boolean;
 
-	public constructor(navBarContainer: HTMLDivElement) {
-		this.container = navBarContainer;
-		this.menuState = false;
-	}
+  public constructor(navBarContainer: HTMLDivElement) {
+    this.container = navBarContainer;
+    this.menuState = false;
+  }
 
-	// Method To Set Logo.
-	public setLogo(): void {
-		const logoContainer: HTMLDivElement = document.createElement('div');
-		const logoImage: HTMLImageElement = document.createElement('img');
-		logoContainer.setAttribute('class', 'logo-container');
-		this.container.appendChild(logoContainer);
-		logoContainer.appendChild(logoImage);
-		Object.assign(logoImage, {
-			className: 'logo-img',
-			src: './src/assets/logo-img.svg',
-			alt: 'Logo',
-			title: 'Project Management',
-		});
-	}
+  // Method To Set Logo.
+  public setLogo(): void {
+    const logoContainer: HTMLDivElement = document.createElement('div');
+    const logoImage: HTMLImageElement = document.createElement('img');
+    logoContainer.setAttribute('class', 'logo-container');
+    this.container.appendChild(logoContainer);
+    logoContainer.appendChild(logoImage);
+    Object.assign(logoImage, {
+      className: 'logo-img',
+      src: '../src/assets/logo-img.svg',
+      alt: 'Logo',
+      title: 'Project Management'
+    })
+  }
 
-	// Set Burger Menu.
-	public setBurgerMenu(): void {
-		const menuContainer: HTMLDivElement = document.createElement('div');
-		menuContainer.setAttribute('class', 'menu-container');
-		this.container.appendChild(menuContainer);
+  // Set Burger Menu.
+  public setBurgerMenu(): void {
+    const menuContainer: HTMLDivElement = document.createElement('div');
+    menuContainer.setAttribute('class', 'menu-container');
+    this.container.appendChild(menuContainer);
 
-		for (let i = 0; i < 3; i++) {
-			const bar: HTMLDivElement = document.createElement('div');
-			Object.assign(bar, {
-				className: 'burger-bar',
-				id: `bar-${i + 1}`,
-			});
-			menuContainer.appendChild(bar);
-		}
-		menuContainer.addEventListener('click', this.changeMenuState);
-	}
+    for (let i = 0; i < 3; i++) {
+      const bar: HTMLDivElement = document.createElement('div');
+      Object.assign(bar, {
+        className: 'burger-bar',
+        id: `bar-${i + 1}`,
+      })
+      menuContainer.appendChild(bar);
+    }
+    menuContainer.addEventListener('click', this.changeMenuState);
+  }
 
-	// Set Nav Links.
-	public setNavLinks(links: string[]): void {
-		const linksContainer: HTMLDivElement = document.createElement('div');
-		const ul: HTMLUListElement = document.createElement('ul');
-		linksContainer.setAttribute('class', 'links-container');
-		linksContainer.appendChild(ul);
-		this.container.appendChild(linksContainer);
+  // Set Nav Links.
+  public setNavLinks(links: string[]): void {
+    const linksContainer: HTMLDivElement = document.createElement('div');
+    const ul: HTMLUListElement = document.createElement('ul');
+    linksContainer.setAttribute('class', 'links-container');
+    linksContainer.appendChild(ul);
+    this.container.appendChild(linksContainer);
 
-		const totalLinks: number = links.length;
-		for (let i = 0; i < totalLinks; i++) {
-			const li: HTMLLIElement = document.createElement('li');
-			const a: HTMLAnchorElement = document.createElement('a');
+    const totalLinks: number = links.length;
+    for (let i = 0; i < totalLinks; i++) {
+      const li: HTMLLIElement = document.createElement('li');
+      const a: HTMLAnchorElement = document.createElement('a');
 
-			// Using Regex To Change The String, If Space Present Then Fill With '-'.
-			const idText: string = links[i].replace(/\s+/g, '-').toLowerCase();
-			const linkText: string = links[i].toUpperCase();
+      // Using Regex To Change The String, If Space Present Then Fill With '-'.
+      const idText: string = links[i].replace(/\s+/g, '-').toLowerCase();
+      const linkText: string = links[i].toUpperCase();
 
-			Object.assign(a, {
-				id: idText,
-				className: 'target-link',
-				href: `#${idText}`,
-			});
-			a.appendChild(document.createTextNode(linkText));
-			li.appendChild(a);
-			ul.appendChild(li);
-		}
-	}
+      Object.assign(a, {
+        id: idText,
+        className: 'target-link',
+        href: `#${idText}`
+      })
+      a.appendChild(document.createTextNode(linkText));
+      li.appendChild(a);
+      ul.appendChild(li);
+    }
+  }
 
-	// Change Menu State And Animation.
-	private changeMenuState = (): void => {
-		const bars: NodeListOf<Element> = this.container.querySelectorAll('.burger-bar');
-		const ul: HTMLElement | null = this.container.querySelector('ul');
-		this.menuState = !this.menuState;
-		this.menuState
-			? bars[0].setAttribute('style', 'transform: rotate(-45deg) translate(-5px, 4px);')
-			: bars[0].setAttribute('style', 'transform: rotate(0) translate(0);');
-		this.menuState
-			? bars[1].setAttribute('style', 'width: 0; height: 0; opacity: 0')
-			: bars[1].setAttribute('style', 'width: auto;');
-		this.menuState
-			? bars[2].setAttribute('style', 'transform: rotate(45deg) translate(-5px, -4px);')
-			: bars[2].setAttribute('style', 'transform: rotate(0) translate(0);');
-		this.menuState
-			? ul?.setAttribute('style', 'transform: translateY(0);')
-			: ul?.setAttribute('style', 'transform: translateY(-100%);');
-	};
+  // Change Menu State And Animation.
+  public changeMenuState = (): void => {
+    const bars: NodeListOf<Element> = this.container.querySelectorAll('.burger-bar');
+    const ul: HTMLElement | null = this.container.querySelector('ul');
+    this.menuState = !this.menuState;
+    this.menuState ? bars[0].setAttribute('style', 'transform: rotate(-45deg) translate(-5px, 4px);') : bars[0].setAttribute('style', 'transform: rotate(0) translate(0);');
+    this.menuState ? bars[1].setAttribute('style', 'width: 0; height: 0; opacity: 0') : bars[1].setAttribute('style', 'width: auto;');
+    this.menuState ? bars[2].setAttribute('style', 'transform: rotate(45deg) translate(-5px, -4px);') : bars[2].setAttribute('style', 'transform: rotate(0) translate(0);');
+    this.menuState ? ul?.setAttribute('style', 'transform: translateY(0);') : ul?.setAttribute('style', 'transform: translateY(-100%);');
+  }
 }

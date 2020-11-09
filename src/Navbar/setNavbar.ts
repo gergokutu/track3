@@ -58,7 +58,7 @@ interface NavbarProps {
 
 // Using Implements To Use Interface.
 // Set Private Which Is Not Necessary For Build And Shouldn't Be Called Outside The Class.
-export class Navbar implements NavbarProps {
+class Navbar implements NavbarProps {
 	public container: HTMLDivElement;
 	private menuState: boolean;
 
@@ -146,3 +146,5 @@ export class Navbar implements NavbarProps {
 			: ul?.setAttribute('style', 'transform: translateY(-100%);');
 	};
 }
+
+export default Navbar;
